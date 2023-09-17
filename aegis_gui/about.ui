@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+<requires lib="gtk" version="4.0"/>
+  <object class="AdwAboutWindow" id="aboutWindow">
+    <property name="application-name">Aegis GUI</property>
+    <property name="application-icon">org.athenaos.aegisgui</property>
+    <property name="modal">True</property>
+    <property name="version">1.9.0</property>
+    <property name="comments">Easily install Athena OS</property>
+    <property name="website">https://athenaos.org</property>
+    <property
+      name="issue-url">https://github.com/Athena-OS/aegis-gui/issues</property>
+    <property name="license-type">gpl-3-0-only</property>
+    <property name="developer-name">Athena OS and Crystal Linux dev team</property>
+    <property name="developers">D3vil0p3r https://github.com/D3vil0p3r
+shard https://github.com/shard77
+axtlos https://github.com/axtloss
+marshmallow https://marsh.town
+Matt https://github.com/SomethingGeneric
+Michal https://github.com/not-my-segfault
+Mirko Brombin https://github.com/mirkobrombin
+Hari Rana (TheEvilSkeleton) https://theevilskeleton.gitlab.io/</property>
+    <property name="artists">jasio https://github.com/hericiumvevo</property>
+  </object>
+</interface>

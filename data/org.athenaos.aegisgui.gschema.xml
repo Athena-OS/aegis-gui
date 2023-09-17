@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="aegis_gui">
+	<schema id="org.athenaos.aegisgui" path="/org/athenaos/aegisgui/">
+	</schema>
+</schemalist>

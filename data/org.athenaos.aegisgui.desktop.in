@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Install Athena OS
+
+Exec=aegis-gui
+
+Icon=org.athenaos.aegisgui
+
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
