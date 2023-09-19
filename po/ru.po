@@ -114,6 +114,14 @@ msgstr ""
 "Поддержка моментальных снимков как средства отката к более ранним состояниям "
 "системы."
 
+#: src/pages/misc_screen.ui:X
+msgid "Snapper"
+msgstr ""
+
+#: src/pages/misc_screen.ui:X
+msgid "Create and compare snapshots, revert between snapshots, and support automatic snapshots timelines."
+msgstr ""
+
 #: src/pages/misc_screen.ui:57
 msgid "Zramd"
 msgstr "«Zramd»"
@@ -233,6 +241,10 @@ msgstr "ipv6 включен/выключен"
 #: src/pages/summary_screen.ui:196
 msgid "timeshift enabled/disabled"
 msgstr "таймшифт включен/выключен"
+
+#: src/pages/summary_screen.ui:X
+msgid "snapper enabled/disabled"
+msgstr "snapper включен/выключен"
 
 #: src/pages/summary_screen.ui:208
 msgid "zramd enabled/disabled"

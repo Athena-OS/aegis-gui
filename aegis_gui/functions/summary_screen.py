@@ -43,6 +43,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     root_button = Gtk.Template.Child()
     desktop_label = Gtk.Template.Child()
     desktop_button = Gtk.Template.Child()
+    theme_label = Gtk.Template.Child()
+    theme_button = Gtk.Template.Child()
     partition_label = Gtk.Template.Child()
     partition_button = Gtk.Template.Child()
     uefi_label = Gtk.Template.Child()
@@ -88,6 +90,9 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
         self.desktop_button.connect(
             "clicked", self.window.show_page, self.window.desktop_screen
+        )
+        self.theme_button.connect(
+            "clicked", self.window.show_page, self.window.theme_screen
         )
         self.partition_button.connect(
             "clicked", self.window.show_page, self.window.partition_screen
@@ -136,6 +141,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
 
         self.desktop_label.set_title(self.window.desktop_screen.chosen_desktop)
+
+        self.theme_label.set_title(self.window.theme_screen.chosen_theme)
 
         if self.window.partition_mode == "Manual":
             self.partition_label.set_title("Manual partitioning selected")
@@ -187,6 +194,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             snapper_enabled=self.window.misc_screen.snapper_enabled,
             zramd_enabled=self.window.misc_screen.zramd_enabled,
             desktop=self.window.desktop_screen.chosen_desktop,
+            theme=self.window.theme_screen.chosen_theme,
             partition_mode=self.window.partition_mode,
             partitions=partitions,
         )

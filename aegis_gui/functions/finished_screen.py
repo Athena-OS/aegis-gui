@@ -1,4 +1,4 @@
-# desktop_screen.py
+# finished_screen.py
 
 #
 # Copyright 2022 user

@@ -37,6 +37,7 @@ class InstallPrefs:
         snapper_enabled,
         zramd_enabled,
         desktop,
+        theme,
         partition_mode,
         partitions,
     ):
@@ -56,6 +57,7 @@ class InstallPrefs:
         self.snapper_enabled = snapper_enabled
         self.zramd_enabled = zramd_enabled
         self.desktop = desktop
+        self.theme = theme
         self.partition_mode = partition_mode
         self.partitions = partitions
         self.is_efi = disks.get_uefi()
@@ -90,6 +92,7 @@ class InstallPrefs:
             ],
             "rootpass": self.password,
             "desktop": self.desktop.lower(),
+            "theme": self.theme.lower(),
             "timeshift": self.timeshift_enabled,
             "snapper": self.snapper_enabled,
             "extra_packages": ["firefox"],

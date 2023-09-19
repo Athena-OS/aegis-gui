@@ -1,8 +1,9 @@
 desktops = [
-    "Onyx",
     "GNOME",
-    "Plasma",
+    "Hyprland",
+    "Bspwm",
+    "KDE Plasma",
+    "MATE",
+    "Cinnamon",
     "XFCE",
-    "Sway",
-    "i3",
 ]

@@ -22,6 +22,7 @@ import socket
 from gi.repository import Gtk, Gdk, GLib, Adw
 from aegis_gui.classes.partition import Partition
 from aegis_gui.widgets.desktop import DesktopEntry
+from aegis_gui.widgets.theme import ThemeEntry
 from aegis_gui.widgets.disk import DiskEntry
 from aegis_gui.widgets.partition import PartitionEntry
 from aegis_gui.functions.keyboard_screen import KeyboardScreen
@@ -29,6 +30,7 @@ from aegis_gui.functions.timezone_screen import TimezoneScreen
 from aegis_gui.functions.locale_screen import LocaleScreen
 from aegis_gui.functions.user_screen import UserScreen
 from aegis_gui.functions.desktop_screen import DesktopScreen
+from aegis_gui.functions.theme_screen import ThemeScreen
 from aegis_gui.functions.misc_screen import MiscScreen
 from aegis_gui.functions.partition_screen import PartitionScreen
 from aegis_gui.functions.summary_screen import SummaryScreen
@@ -39,6 +41,7 @@ from aegis_gui.classes.aegis_screen import AegisScreen
 from aegis_gui.locales.locales_list import locations
 from aegis_gui.keymaps import keymaps
 from aegis_gui.desktops import desktops
+from aegis_gui.themes import themes
 from aegis_gui.utils import disks
 from aegis_gui.utils.threading import RunAsync
 
@@ -73,6 +76,9 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.desktop_screen = DesktopScreen(
             window=self, set_valid=self.page_valid, **kwargs
         )
+        self.theme_screen = ThemeScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
         self.user_screen = UserScreen(window=self, set_valid=self.page_valid, **kwargs)
         self.keyboard_screen = KeyboardScreen(
             window=self, set_valid=self.page_valid, keymaps=keymaps, **kwargs
@@ -100,6 +106,7 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.carousel.append(self.locale_screen)
         self.carousel.append(self.user_screen)
         self.carousel.append(self.desktop_screen)
+        self.carousel.append(self.theme_screen)
         self.carousel.append(self.misc_screen)
         self.carousel.append(self.partition_screen)
         # self.carousel.append(self.manual_partition)
@@ -119,7 +126,7 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         ### Test desktops
         firstdesktop = DesktopEntry(
             window=self, desktop=desktops[0], button_group=None, **kwargs
-        )  # Manually specifying onyx since the other entries need a button group to attach to
+        )  # Manually specifying GNOME since the other entries need a button group to attach to
         self.desktop_screen.list_desktops.append(firstdesktop)
         self.desktop_screen.chosen_desktop = (
             self.desktop_screen.list_desktops.get_row_at_index(0).get_title()
@@ -132,6 +139,27 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
                         window=self,
                         desktop=desktop,
                         button_group=firstdesktop.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
+
+        ### Test themes
+        firsttheme = ThemeEntry(
+            window=self, theme=themes[0], button_group=None, **kwargs
+        )  # Manually specifying Akame since the other entries need a button group to attach to
+        self.theme_screen.list_themes.append(firsttheme)
+        self.theme_screen.chosen_theme = (
+            self.theme_screen.list_themes.get_row_at_index(0).get_title()
+        )
+        self.theme_screen.list_themes.select_row(firsttheme)
+        for theme in themes:
+            if theme != themes[0]:
+                self.theme_screen.list_themes.append(
+                    ThemeEntry(
+                        window=self,
+                        theme=theme,
+                        button_group=firsttheme.select_button,
                         **kwargs
                     )
                 )

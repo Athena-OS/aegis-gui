@@ -32,7 +32,7 @@
                         <style>
                           <class name="boxed-list"/>
                         </style>
-                        <child>
+                        <child> <!--Timeshift-->
                           <object class="AdwActionRow">
                             <property name="activatable">false</property>
                             <property name="selectable">false</property>
@@ -49,8 +49,8 @@
                               </object>
                             </child>
                           </object>
-                        </child>
-                        <child>
+                        </child> <!--End Timeshift-->
+                        <child> <!--Snapper-->
                           <object class="AdwActionRow">
                             <property name="activatable">false</property>
                             <property name="selectable">false</property>
@@ -67,8 +67,8 @@
                               </object>
                             </child>
                           </object>
-                        </child>
-                        <child>
+                        </child> <!--End Snapper-->
+                        <child> <!--zRAM-->
                           <object class="AdwActionRow">
                             <property name="activatable">false</property>
                             <property name="selectable">false</property>
@@ -85,7 +85,7 @@
                               </object>
                             </child>
                           </object>
-                        </child>
+                        </child><!--End zRAM-->
                       </object>
                     </child>
                   </object>

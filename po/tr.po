@@ -111,6 +111,14 @@ msgstr ""
 "Sistemin önceki durumlarına geri dönmenin bir yolu olarak anlık görüntüleri "
 "destekleyin."
 
+#: src/pages/misc_screen.ui:X
+msgid "Snapper"
+msgstr ""
+
+#: src/pages/misc_screen.ui:X
+msgid "Create and compare snapshots, revert between snapshots, and support automatic snapshots timelines."
+msgstr ""
+
 #: src/pages/misc_screen.ui:57
 msgid "Zramd"
 msgstr "Zramd"
@@ -230,6 +238,10 @@ msgstr "ipv6 etkin/devre dışı"
 #: src/pages/summary_screen.ui:196
 msgid "timeshift enabled/disabled"
 msgstr "timeshift etkin/devre dışı"
+
+#: src/pages/summary_screen.ui:X
+msgid "snapper enabled/disabled"
+msgstr "snapper etkin/devre dışı"
 
 #: src/pages/summary_screen.ui:208
 msgid "zramd enabled/disabled"

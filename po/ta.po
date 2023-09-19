@@ -106,6 +106,14 @@ msgstr ""
 msgid "Support snapshots as a means to roll back to earlier states of the system."
 msgstr ""
 
+#: src/pages/misc_screen.ui:X
+msgid "Snapper"
+msgstr ""
+
+#: src/pages/misc_screen.ui:X
+msgid "Create and compare snapshots, revert between snapshots, and support automatic snapshots timelines."
+msgstr ""
+
 #: src/pages/misc_screen.ui:57
 msgid "Zramd"
 msgstr ""
@@ -222,6 +230,10 @@ msgstr ""
 
 #: src/pages/summary_screen.ui:196
 msgid "timeshift enabled/disabled"
+msgstr ""
+
+#: src/pages/summary_screen.ui:X
+msgid "snapper enabled/disabled"
 msgstr ""
 
 #: src/pages/summary_screen.ui:208
