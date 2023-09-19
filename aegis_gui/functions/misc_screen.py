@@ -29,12 +29,14 @@ class MiscScreen(AegisScreen, Adw.Bin):
     hostname_entry = Gtk.Template.Child()
     #ipv_switch = Gtk.Template.Child()
     timeshift_switch = Gtk.Template.Child()
+    snapper_switch = Gtk.Template.Child()
     zramd_switch = Gtk.Template.Child()
 
     hostname = "athena"
     ipv_enabled = False
     zramd_enabled = False
     timeshift_enabled = True
+    snapper_enabled = True
     zramd_enabled = True
     move_to_summary = False
 
@@ -49,3 +51,4 @@ class MiscScreen(AegisScreen, Adw.Bin):
         #self.ipv_enabled = self.ipv_switch.get_state()
         self.zramd_enabled = self.zramd_switch.get_state()
         self.timeshift_enabled = self.timeshift_switch.get_state()
+        self.snapper_enabled = self.snapper_switch.get_state()

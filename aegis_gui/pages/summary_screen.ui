@@ -239,6 +239,21 @@
                           </object>
                         </child>
                         <child>
+                          <object class="AdwActionRow" id="snapper_label">
+                            <property
+                              name="title"
+                              translatable="true">snapper enabled/disabled</property>
+                            <child>
+                              <object class="GtkButton" id="snapper_button">
+                                <property name="valign">center</property>
+                                <property name="halign">center</property>
+                                <property
+                                  name="icon-name">document-edit-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
                           <object class="AdwActionRow" id="zramd_label">
                             <property
                               name="title"

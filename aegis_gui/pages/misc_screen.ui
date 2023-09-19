@@ -56,6 +56,24 @@
                             <property name="selectable">false</property>
                             <property
                               name="title"
+                              translatable="true">Snapper</property>
+                            <property
+                              name="subtitle"
+                              translatable="true">Create and compare snapshots, revert between snapshots, and support automatic snapshots timelines.</property>
+                            <child>
+                              <object class="GtkSwitch" id="snapper_switch">
+                                <property name="valign">center</property>
+                                <property name="active">true</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwActionRow">
+                            <property name="activatable">false</property>
+                            <property name="selectable">false</property>
+                            <property
+                              name="title"
                               translatable="true">Zramd</property>
                             <property
                               name="subtitle"

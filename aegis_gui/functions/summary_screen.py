@@ -48,6 +48,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     uefi_label = Gtk.Template.Child()
     timeshift_label = Gtk.Template.Child()
     timeshift_button = Gtk.Template.Child()
+    snapper_label = Gtk.Template.Child()
+    snapper_button = Gtk.Template.Child()
     zramd_label = Gtk.Template.Child()
     zramd_button = Gtk.Template.Child()
     added_locales = []
@@ -91,6 +93,9 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             "clicked", self.window.show_page, self.window.partition_screen
         )
         self.timeshift_button.connect(
+            "clicked", self.window.show_page, self.window.misc_screen
+        )
+        self.snapper_button.connect(
             "clicked", self.window.show_page, self.window.misc_screen
         )
         self.zramd_button.connect(
@@ -149,6 +154,11 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             if self.window.misc_screen.timeshift_enabled
             else "timeshift disabled"
         )
+        self.snapper_label.set_title(
+            "snapper enabled"
+            if self.window.misc_screen.snapper_enabled
+            else "snapper disabled"
+        )
         self.zramd_label.set_title(
             "zramd enabled"
             if self.window.misc_screen.zramd_enabled
@@ -174,6 +184,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             disk=self.window.partition_screen.selected_partition,
             hostname=self.window.misc_screen.hostname,
             timeshift_enabled=self.window.misc_screen.timeshift_enabled,
+            snapper_enabled=self.window.misc_screen.snapper_enabled,
             zramd_enabled=self.window.misc_screen.zramd_enabled,
             desktop=self.window.desktop_screen.chosen_desktop,
             partition_mode=self.window.partition_mode,

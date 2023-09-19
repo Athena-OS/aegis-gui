@@ -34,6 +34,7 @@ class InstallPrefs:
         disk,
         hostname,
         timeshift_enabled,
+        snapper_enabled,
         zramd_enabled,
         desktop,
         partition_mode,
@@ -52,6 +53,7 @@ class InstallPrefs:
             self.disk = ""
         self.hostname = hostname if len(hostname) != 0 else "athena"
         self.timeshift_enabled = timeshift_enabled
+        self.snapper_enabled = snapper_enabled
         self.zramd_enabled = zramd_enabled
         self.desktop = desktop
         self.partition_mode = partition_mode
@@ -89,6 +91,7 @@ class InstallPrefs:
             "rootpass": self.password,
             "desktop": self.desktop.lower(),
             "timeshift": self.timeshift_enabled,
+            "snapper": self.snapper_enabled,
             "extra_packages": ["firefox"],
             "flatpak": True,
             "zramd": self.zramd_enabled,
