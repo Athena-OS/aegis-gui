@@ -8,6 +8,8 @@ aegis_gui_sources = [
     'variant.py',
     'desktop.py',
     'theme.py',
+    'displaymanager.py',
+    'shell.py',
     'disk.py',
     'partition.py',
     'locale.py',

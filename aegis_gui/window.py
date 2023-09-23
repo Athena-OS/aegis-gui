@@ -23,6 +23,8 @@ from gi.repository import Gtk, Gdk, GLib, Adw
 from aegis_gui.classes.partition import Partition
 from aegis_gui.widgets.desktop import DesktopEntry
 from aegis_gui.widgets.theme import ThemeEntry
+from aegis_gui.widgets.displaymanager import DisplayManagerEntry
+from aegis_gui.widgets.shell import ShellEntry
 from aegis_gui.widgets.disk import DiskEntry
 from aegis_gui.widgets.partition import PartitionEntry
 from aegis_gui.functions.keyboard_screen import KeyboardScreen
@@ -31,6 +33,8 @@ from aegis_gui.functions.locale_screen import LocaleScreen
 from aegis_gui.functions.user_screen import UserScreen
 from aegis_gui.functions.desktop_screen import DesktopScreen
 from aegis_gui.functions.theme_screen import ThemeScreen
+from aegis_gui.functions.displaymanager_screen import DisplayManagerScreen
+from aegis_gui.functions.shell_screen import ShellScreen
 from aegis_gui.functions.misc_screen import MiscScreen
 from aegis_gui.functions.partition_screen import PartitionScreen
 from aegis_gui.functions.summary_screen import SummaryScreen
@@ -42,6 +46,8 @@ from aegis_gui.locales.locales_list import locations
 from aegis_gui.keymaps import keymaps
 from aegis_gui.desktops import desktops
 from aegis_gui.themes import themes
+from aegis_gui.displaymanagers import displaymanagers
+from aegis_gui.shells import shells
 from aegis_gui.utils import disks
 from aegis_gui.utils.threading import RunAsync
 
@@ -79,6 +85,12 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.theme_screen = ThemeScreen(
             window=self, set_valid=self.page_valid, **kwargs
         )
+        self.displaymanager_screen = DisplayManagerScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
+        self.shell_screen = ShellScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
         self.user_screen = UserScreen(window=self, set_valid=self.page_valid, **kwargs)
         self.keyboard_screen = KeyboardScreen(
             window=self, set_valid=self.page_valid, keymaps=keymaps, **kwargs
@@ -107,6 +119,8 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.carousel.append(self.user_screen)
         self.carousel.append(self.desktop_screen)
         self.carousel.append(self.theme_screen)
+        self.carousel.append(self.displaymanager_screen)
+        self.carousel.append(self.shell_screen)
         self.carousel.append(self.misc_screen)
         self.carousel.append(self.partition_screen)
         # self.carousel.append(self.manual_partition)
@@ -160,6 +174,48 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
                         window=self,
                         theme=theme,
                         button_group=firsttheme.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
+
+        ### Test display managers
+        firstdm = DisplayManagerEntry(
+            window=self, displaymanager=displaymanagers[0], button_group=None, **kwargs
+        )  # Manually specifying GDM since the other entries need a button group to attach to
+        self.displaymanager_screen.list_displaymanagers.append(firstdm)
+        self.displaymanager_screen.chosen_displaymanager = (
+            self.displaymanager_screen.list_displaymanagers.get_row_at_index(0).get_title()
+        )
+        self.displaymanager_screen.list_displaymanagers.select_row(firstdm)
+        for dm in displaymanagers:
+            if dm != displaymanagers[0]:
+                self.displaymanager_screen.list_displaymanagers.append(
+                    DisplayManagerEntry(
+                        window=self,
+                        displaymanager=dm,
+                        button_group=firstdm.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
+
+        ### Test shells
+        firstshell = ShellEntry(
+            window=self, shell=shells[0], button_group=None, **kwargs
+        )  # Manually specifying Bash since the other entries need a button group to attach to
+        self.shell_screen.list_shells.append(firstshell)
+        self.shell_screen.chosen_shell = (
+            self.shell_screen.list_shells.get_row_at_index(0).get_title()
+        )
+        self.shell_screen.list_shells.select_row(firstshell)
+        for shell in shells:
+            if shell != shells[0]:
+                self.shell_screen.list_shells.append(
+                    ShellEntry(
+                        window=self,
+                        shell=shell,
+                        button_group=firstshell.select_button,
                         **kwargs
                     )
                 )

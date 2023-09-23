@@ -1,0 +1,5 @@
+shells = [
+    "Bash",
+    "Fish",
+    "Zsh",
+]

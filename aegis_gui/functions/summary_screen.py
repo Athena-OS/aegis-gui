@@ -45,6 +45,10 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     desktop_button = Gtk.Template.Child()
     theme_label = Gtk.Template.Child()
     theme_button = Gtk.Template.Child()
+    displaymanager_label = Gtk.Template.Child()
+    displaymanager_button = Gtk.Template.Child()
+    shell_label = Gtk.Template.Child()
+    shell_button = Gtk.Template.Child()
     partition_label = Gtk.Template.Child()
     partition_button = Gtk.Template.Child()
     uefi_label = Gtk.Template.Child()
@@ -93,6 +97,12 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
         self.theme_button.connect(
             "clicked", self.window.show_page, self.window.theme_screen
+        )
+        self.displaymanager_button.connect(
+            "clicked", self.window.show_page, self.window.displaymanager_screen
+        )
+        self.shell_button.connect(
+            "clicked", self.window.show_page, self.window.shell_screen
         )
         self.partition_button.connect(
             "clicked", self.window.show_page, self.window.partition_screen
@@ -143,6 +153,10 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         self.desktop_label.set_title(self.window.desktop_screen.chosen_desktop)
 
         self.theme_label.set_title(self.window.theme_screen.chosen_theme)
+
+        self.displaymanager_label.set_title(self.window.displaymanager_screen.chosen_displaymanager)
+
+        self.shell_label.set_title(self.window.shell_screen.chosen_shell)
 
         if self.window.partition_mode == "Manual":
             self.partition_label.set_title("Manual partitioning selected")
@@ -195,6 +209,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             zramd_enabled=self.window.misc_screen.zramd_enabled,
             desktop=self.window.desktop_screen.chosen_desktop,
             theme=self.window.theme_screen.chosen_theme,
+            displaymanager=self.window.displaymanager_screen.chosen_displaymanager,
+            shell=self.window.shell_screen.chosen_shell,
             partition_mode=self.window.partition_mode,
             partitions=partitions,
         )

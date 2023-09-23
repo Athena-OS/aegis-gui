@@ -38,6 +38,8 @@ class InstallPrefs:
         zramd_enabled,
         desktop,
         theme,
+        displaymanager,
+        shell,
         partition_mode,
         partitions,
     ):
@@ -58,6 +60,8 @@ class InstallPrefs:
         self.zramd_enabled = zramd_enabled
         self.desktop = desktop
         self.theme = theme
+        self.displaymanager = displaymanager
+        self.shell = shell
         self.partition_mode = partition_mode
         self.partitions = partitions
         self.is_efi = disks.get_uefi()
@@ -93,6 +97,8 @@ class InstallPrefs:
             "rootpass": self.password,
             "desktop": self.desktop.lower(),
             "theme": self.theme.lower(),
+            "displaymanager": self.displaymanager.lower(),
+            "shell": self.shell.lower(),
             "timeshift": self.timeshift_enabled,
             "snapper": self.snapper_enabled,
             "extra_packages": ["firefox"],

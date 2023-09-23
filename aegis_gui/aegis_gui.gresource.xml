@@ -8,12 +8,16 @@
     <file>widgets/variant.ui</file>
     <file>widgets/desktop.ui</file>
     <file>widgets/theme.ui</file>
+    <file>widgets/displaymanager.ui</file>
+    <file>widgets/shell.ui</file>
     <file>widgets/disk.ui</file>
     <file>widgets/partition.ui</file>
     <file>widgets/locale.ui</file>
     <file>widgets/selected_locale.ui</file>
     <file>pages/desktop_screen.ui</file>
     <file>pages/theme_screen.ui</file>
+    <file>pages/displaymanager_screen.ui</file>
+    <file>pages/shell_screen.ui</file>
     <file>pages/finished_screen.ui</file>
     <file>pages/install_screen.ui</file>
     <file>pages/keyboard/keyboard_screen.ui</file>

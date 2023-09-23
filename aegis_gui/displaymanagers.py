@@ -1,0 +1,5 @@
+displaymanagers = [
+    "GDM",
+    "LightDM",
+    "SDDM",
+]

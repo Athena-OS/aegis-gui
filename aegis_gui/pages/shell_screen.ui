@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="ThemeScreen" parent="AdwBin">
+  <template class="ShellScreen" parent="AdwBin">
     <property name="vexpand">true</property>
     <property name="hexpand">true</property>
     <child>
@@ -11,16 +11,16 @@
         <child>
           <object class="AdwStatusPage"> <property
               name="title"
-              translatable="true">Select Theme</property> <property
+              translatable="true">Select Shell</property> <property
               name="description"
-              translatable="true">You can install a different theme later.</property>
-            <property name="css-classes">aegis_compact_theme</property>
+              translatable="true">You can install a different shell later.</property>
+            <property name="css-classes">aegis_compact_shell</property>
             <child>
               <object class="AdwPreferencesPage">
                 <child>
                   <object class="AdwPreferencesGroup">
                     <child>
-                      <object class="GtkListBox" id="list_themes">
+                      <object class="GtkListBox" id="list_shells">
                         <property name="hexpand">true</property>
                         <property name="vexpand">true</property>
                         <style>
