@@ -1,0 +1,5 @@
+browsers = [
+    "Firefox",
+    "Brave",
+    "Mullvad",
+]

@@ -49,6 +49,10 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     displaymanager_button = Gtk.Template.Child()
     shell_label = Gtk.Template.Child()
     shell_button = Gtk.Template.Child()
+    browser_label = Gtk.Template.Child()
+    browser_button = Gtk.Template.Child()
+    terminal_label = Gtk.Template.Child()
+    terminal_button = Gtk.Template.Child()
     partition_label = Gtk.Template.Child()
     partition_button = Gtk.Template.Child()
     uefi_label = Gtk.Template.Child()
@@ -104,6 +108,12 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         self.shell_button.connect(
             "clicked", self.window.show_page, self.window.shell_screen
         )
+        self.browser_button.connect(
+            "clicked", self.window.show_page, self.window.browser_screen
+        )
+        self.terminal_button.connect(
+            "clicked", self.window.show_page, self.window.terminal_screen
+        )
         self.partition_button.connect(
             "clicked", self.window.show_page, self.window.partition_screen
         )
@@ -158,6 +168,10 @@ class SummaryScreen(AegisScreen, Adw.Bin):
 
         self.shell_label.set_title(self.window.shell_screen.chosen_shell)
 
+        self.browser_label.set_title(self.window.browser_screen.chosen_browser)
+
+        self.terminal_label.set_title(self.window.terminal_screen.chosen_terminal)
+
         if self.window.partition_mode == "Manual":
             self.partition_label.set_title("Manual partitioning selected")
             self.partition_label.set_subtitle("")
@@ -211,6 +225,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             theme=self.window.theme_screen.chosen_theme,
             displaymanager=self.window.displaymanager_screen.chosen_displaymanager,
             shell=self.window.shell_screen.chosen_shell,
+            browser=self.window.browser_screen.chosen_browser,
+            terminal=self.window.terminal_screen.chosen_terminal,
             partition_mode=self.window.partition_mode,
             partitions=partitions,
         )

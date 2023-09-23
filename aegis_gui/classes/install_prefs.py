@@ -40,6 +40,8 @@ class InstallPrefs:
         theme,
         displaymanager,
         shell,
+        browser,
+        terminal,
         partition_mode,
         partitions,
     ):
@@ -62,6 +64,8 @@ class InstallPrefs:
         self.theme = theme
         self.displaymanager = displaymanager
         self.shell = shell
+        self.browser = browser
+        self.terminal = terminal
         self.partition_mode = partition_mode
         self.partitions = partitions
         self.is_efi = disks.get_uefi()

@@ -25,6 +25,8 @@ from aegis_gui.widgets.desktop import DesktopEntry
 from aegis_gui.widgets.theme import ThemeEntry
 from aegis_gui.widgets.displaymanager import DisplayManagerEntry
 from aegis_gui.widgets.shell import ShellEntry
+from aegis_gui.widgets.browser import BrowserEntry
+from aegis_gui.widgets.terminal import TerminalEntry
 from aegis_gui.widgets.disk import DiskEntry
 from aegis_gui.widgets.partition import PartitionEntry
 from aegis_gui.functions.keyboard_screen import KeyboardScreen
@@ -35,6 +37,8 @@ from aegis_gui.functions.desktop_screen import DesktopScreen
 from aegis_gui.functions.theme_screen import ThemeScreen
 from aegis_gui.functions.displaymanager_screen import DisplayManagerScreen
 from aegis_gui.functions.shell_screen import ShellScreen
+from aegis_gui.functions.browser_screen import BrowserScreen
+from aegis_gui.functions.terminal_screen import TerminalScreen
 from aegis_gui.functions.misc_screen import MiscScreen
 from aegis_gui.functions.partition_screen import PartitionScreen
 from aegis_gui.functions.summary_screen import SummaryScreen
@@ -48,6 +52,8 @@ from aegis_gui.desktops import desktops
 from aegis_gui.themes import themes
 from aegis_gui.displaymanagers import displaymanagers
 from aegis_gui.shells import shells
+from aegis_gui.browsers import browsers
+from aegis_gui.terminals import terminals
 from aegis_gui.utils import disks
 from aegis_gui.utils.threading import RunAsync
 
@@ -91,6 +97,12 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.shell_screen = ShellScreen(
             window=self, set_valid=self.page_valid, **kwargs
         )
+        self.browser_screen = BrowserScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
+        self.terminal_screen = TerminalScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
         self.user_screen = UserScreen(window=self, set_valid=self.page_valid, **kwargs)
         self.keyboard_screen = KeyboardScreen(
             window=self, set_valid=self.page_valid, keymaps=keymaps, **kwargs
@@ -121,6 +133,8 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.carousel.append(self.theme_screen)
         self.carousel.append(self.displaymanager_screen)
         self.carousel.append(self.shell_screen)
+        self.carousel.append(self.browser_screen)
+        self.carousel.append(self.terminal_screen)
         self.carousel.append(self.misc_screen)
         self.carousel.append(self.partition_screen)
         # self.carousel.append(self.manual_partition)
@@ -216,6 +230,48 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
                         window=self,
                         shell=shell,
                         button_group=firstshell.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
+
+        ### Test browsers
+        firstbrowser = BrowserEntry(
+            window=self, browser=browsers[0], button_group=None, **kwargs
+        )  # Manually specifying Firefox since the other entries need a button group to attach to
+        self.browser_screen.list_browsers.append(firstbrowser)
+        self.browser_screen.chosen_browser = (
+            self.browser_screen.list_browsers.get_row_at_index(0).get_title()
+        )
+        self.browser_screen.list_browsers.select_row(firstbrowser)
+        for browser in browsers:
+            if browser != browsers[0]:
+                self.browser_screen.list_browsers.append(
+                    BrowserEntry(
+                        window=self,
+                        browser=browser,
+                        button_group=firstbrowser.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
+
+        ### Test terminals
+        firstterminal = TerminalEntry(
+            window=self, terminal=terminals[0], button_group=None, **kwargs
+        )  # Manually specifying Alacritty since the other entries need a button group to attach to
+        self.terminal_screen.list_terminals.append(firstterminal)
+        self.terminal_screen.chosen_terminal = (
+            self.terminal_screen.list_terminals.get_row_at_index(0).get_title()
+        )
+        self.terminal_screen.list_terminals.select_row(firstterminal)
+        for terminal in terminals:
+            if terminal != terminals[0]:
+                self.terminal_screen.list_terminals.append(
+                    TerminalEntry(
+                        window=self,
+                        terminal=terminal,
+                        button_group=firstterminal.select_button,
                         **kwargs
                     )
                 )

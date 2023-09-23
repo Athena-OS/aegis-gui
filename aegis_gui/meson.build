@@ -41,6 +41,8 @@ aegis_gui_sources = [
   'themes.py',
   'displaymanagers.py',
   'shells.py',
+  'browsers.py',
+  'terminals.py',
   'manualpartitioning.py'
 ]
 
