@@ -103,6 +103,8 @@ class InstallPrefs:
             "theme": self.theme.lower(),
             "displaymanager": self.displaymanager.lower(),
             "shell": self.shell.lower(),
+            "browser": self.browser.lower(),
+            "terminal": self.terminal.lower(),
             "timeshift": self.timeshift_enabled,
             "snapper": self.snapper_enabled,
             "extra_packages": ["firefox"],
