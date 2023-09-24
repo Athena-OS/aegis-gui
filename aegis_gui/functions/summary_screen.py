@@ -47,8 +47,6 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     theme_button = Gtk.Template.Child()
     displaymanager_label = Gtk.Template.Child()
     displaymanager_button = Gtk.Template.Child()
-    shell_label = Gtk.Template.Child()
-    shell_button = Gtk.Template.Child()
     browser_label = Gtk.Template.Child()
     browser_button = Gtk.Template.Child()
     terminal_label = Gtk.Template.Child()
@@ -104,9 +102,6 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
         self.displaymanager_button.connect(
             "clicked", self.window.show_page, self.window.displaymanager_screen
-        )
-        self.shell_button.connect(
-            "clicked", self.window.show_page, self.window.shell_screen
         )
         self.browser_button.connect(
             "clicked", self.window.show_page, self.window.browser_screen
@@ -165,8 +160,6 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         self.theme_label.set_title(self.window.theme_screen.chosen_theme)
 
         self.displaymanager_label.set_title(self.window.displaymanager_screen.chosen_displaymanager)
-
-        self.shell_label.set_title(self.window.shell_screen.chosen_shell)
 
         self.browser_label.set_title(self.window.browser_screen.chosen_browser)
 
