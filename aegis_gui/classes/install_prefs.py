@@ -119,3 +119,5 @@ class InstallPrefs:
             "kernel": "linux-lts",
         }
         return json.dumps(prefs)
+
+# Note: if you get error on missing element on json file, the elements required on json file are defined in config.rs of backend
