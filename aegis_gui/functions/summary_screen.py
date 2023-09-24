@@ -153,7 +153,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         self.keyboard_label.set_subtitle(self.window.keyboard_screen.variant.variant)
 
         self.username_label.set_title(self.window.user_screen.username)
-        self.shell_label.set_title(self.window.shell_screen.chosen_shell) # In Summary window, it shows the name of the chosen shell. It retrieves the choice from the Shell section window
+        self.shell_label.set_title(self.window.shell_screen.chosen_shell+" shell") # In Summary window, it shows the name of the chosen shell. It retrieves the choice from the Shell section window
         self.sudo_label.set_title(
             "sudo enabled" if self.window.user_screen.sudo_enabled else "sudo disabled"
         )
