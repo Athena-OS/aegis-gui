@@ -29,6 +29,7 @@ class InstallPrefs:
         layout,
         variant,
         username,
+        shell,
         password,
         enable_sudo,
         disk,
@@ -49,6 +50,7 @@ class InstallPrefs:
         self.layout = layout
         self.variant = variant
         self.username = username
+        self.shell = shell
         self.password = password
         self.enable_sudo = enable_sudo
         if partition_mode.lower() != "manual":
