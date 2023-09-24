@@ -39,7 +39,6 @@ class InstallPrefs:
         desktop,
         theme,
         displaymanager,
-        shell,
         browser,
         terminal,
         partition_mode,
@@ -63,7 +62,6 @@ class InstallPrefs:
         self.desktop = desktop
         self.theme = theme
         self.displaymanager = displaymanager
-        self.shell = shell
         self.browser = browser
         self.terminal = terminal
         self.partition_mode = partition_mode
@@ -95,20 +93,19 @@ class InstallPrefs:
                     "name": self.username,
                     "password": self.password,
                     "hasroot": self.enable_sudo,
-                    "shell": "bash",
+                    "shell": self.shell.lower(),
                 }
             ],
             "rootpass": self.password,
             "desktop": self.desktop.lower(),
             "theme": self.theme.lower(),
             "displaymanager": self.displaymanager.lower(),
-            "shell": self.shell.lower(),
             "browser": self.browser.lower(),
             "terminal": self.terminal.lower(),
             "timeshift": self.timeshift_enabled,
             "snapper": self.snapper_enabled,
-            "extra_packages": ["firefox"],
-            "flatpak": True,
+            "extra_packages": ["nix"],
+            "flatpak": False,
             "zramd": self.zramd_enabled,
             "unakite": {
                 "enable": False,
@@ -117,6 +114,6 @@ class InstallPrefs:
                 "efidir": "/dev/null",
                 "bootdev": "/dev/null",
             },
-            "kernel": "linux",
+            "kernel": "linux-lts",
         }
         return json.dumps(prefs)
