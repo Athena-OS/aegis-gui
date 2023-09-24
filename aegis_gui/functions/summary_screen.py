@@ -37,6 +37,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     keyboard_button = Gtk.Template.Child()
     username_label = Gtk.Template.Child()
     username_button = Gtk.Template.Child()
+    shell_label = Gtk.Template.Child()
+    shell_button = Gtk.Template.Child()
     sudo_label = Gtk.Template.Child()
     sudo_button = Gtk.Template.Child()
     root_label = Gtk.Template.Child()
@@ -87,6 +89,9 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
         self.username_button.connect(
             "clicked", self.window.show_page, self.window.user_screen
+        )
+        self.shell_button.connect( # In Summary window, when click on edit on Shell row, it comes back to the Shell section to edit your previous choice
+            "clicked", self.window.show_page, self.window.shell_screen
         )
         self.sudo_button.connect(
             "clicked", self.window.show_page, self.window.user_screen
@@ -148,6 +153,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         self.keyboard_label.set_subtitle(self.window.keyboard_screen.variant.variant)
 
         self.username_label.set_title(self.window.user_screen.username)
+        self.shell_label.set_title(self.window.shell_screen.chosen_shell) # In Summary window, it shows the name of the chosen shell. It retrieves the choice from the Shell section window
         self.sudo_label.set_title(
             "sudo enabled" if self.window.user_screen.sudo_enabled else "sudo disabled"
         )
