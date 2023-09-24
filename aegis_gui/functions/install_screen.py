@@ -53,10 +53,13 @@ class InstallScreen(AegisScreen, Adw.Bin):
 
         prefs = self.window.summary_screen.installprefs.generate_json()
 
+        log_file_path = "/tmp/aegis-gui-output.txt"
+        log_file = open(log_file_path, "a")  # Open the log file in append mode
+
         self.vte_instance.spawn_async(
             Vte.PtyFlags.DEFAULT,
             ".",  # working directory
-            ["bash", "/usr/share/aegis-gui/aegis_gui/scripts/install.sh"],
+            ["bash", "-c", f"cat /usr/share/aegis-gui/aegis_gui/scripts/install.sh | bash -s 2>&1 | tee -a {log_file_path}"], # using cat to read the content of the install.sh script and then piping it into bash with the -s option. This allows you to run the script without marking it as executable. By the way, this line is used to redirect stdout and stderr to both GTK window and output log file
             [],  # environment
             GLib.SpawnFlags.DO_NOT_REAP_CHILD,
             None,
@@ -65,6 +68,7 @@ class InstallScreen(AegisScreen, Adw.Bin):
             None,
             None,
         )
+        log_file.close()
 
     def on_vte_child_exited(self, *args):
         self.set_valid(True)
