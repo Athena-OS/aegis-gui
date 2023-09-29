@@ -6,6 +6,7 @@
     <file>widgets/timezone.ui</file>
     <file>widgets/layout.ui</file>
     <file>widgets/variant.ui</file>
+    <file>widgets/kernel.ui</file>
     <file>widgets/desktop.ui</file>
     <file>widgets/theme.ui</file>
     <file>widgets/displaymanager.ui</file>
@@ -16,6 +17,7 @@
     <file>widgets/partition.ui</file>
     <file>widgets/locale.ui</file>
     <file>widgets/selected_locale.ui</file>
+    <file>pages/kernel_screen.ui</file>
     <file>pages/desktop_screen.ui</file>
     <file>pages/theme_screen.ui</file>
     <file>pages/displaymanager_screen.ui</file>

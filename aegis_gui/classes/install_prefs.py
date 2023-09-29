@@ -37,6 +37,7 @@ class InstallPrefs:
         timeshift_enabled,
         snapper_enabled,
         zramd_enabled,
+        kernel,
         desktop,
         theme,
         displaymanager,
@@ -61,6 +62,7 @@ class InstallPrefs:
         self.timeshift_enabled = timeshift_enabled
         self.snapper_enabled = snapper_enabled
         self.zramd_enabled = zramd_enabled
+        self.kernel = kernel
         self.desktop = desktop
         self.theme = theme
         self.displaymanager = displaymanager
@@ -106,10 +108,10 @@ class InstallPrefs:
             "terminal": self.terminal.lower(),
             "timeshift": self.timeshift_enabled,
             "snapper": self.snapper_enabled,
-            "extra_packages": ["nix"],
+            "extra_packages": ["flameshot"],
             "flatpak": False,
             "zramd": self.zramd_enabled,
-            "kernel": "linux-lts",
+            "kernel": self.kernel.lower(),
         }
         return json.dumps(prefs)
 

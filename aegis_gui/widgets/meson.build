@@ -6,6 +6,7 @@ aegis_gui_sources = [
     'timezone.py',
     'layout.py',
     'variant.py',
+    'kernel.py',
     'desktop.py',
     'theme.py',
     'displaymanager.py',

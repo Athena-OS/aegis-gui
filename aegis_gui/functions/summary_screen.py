@@ -43,6 +43,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     sudo_button = Gtk.Template.Child()
     root_label = Gtk.Template.Child()
     root_button = Gtk.Template.Child()
+    kernel_label = Gtk.Template.Child()
+    kernel_button = Gtk.Template.Child()
     desktop_label = Gtk.Template.Child()
     desktop_button = Gtk.Template.Child()
     theme_label = Gtk.Template.Child()
@@ -97,6 +99,9 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
         self.root_button.connect(
             "clicked", self.window.show_page, self.window.user_screen
+        )
+        self.kernel_button.connect(
+            "clicked", self.window.show_page, self.window.kernel_screen
         )
         self.desktop_button.connect(
             "clicked", self.window.show_page, self.window.desktop_screen
@@ -160,6 +165,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             "root enabled" if self.window.user_screen.root_enabled else "root disabled"
         )
 
+        self.kernel_label.set_title(self.window.kernel_screen.chosen_kernel)
+
         self.desktop_label.set_title(self.window.desktop_screen.chosen_desktop)
 
         self.theme_label.set_title(self.window.theme_screen.chosen_theme)
@@ -218,6 +225,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             timeshift_enabled=self.window.misc_screen.timeshift_enabled,
             snapper_enabled=self.window.misc_screen.snapper_enabled,
             zramd_enabled=self.window.misc_screen.zramd_enabled,
+            kernel=self.window.kernel_screen.chosen_kernel,
             desktop=self.window.desktop_screen.chosen_desktop,
             theme=self.window.theme_screen.chosen_theme,
             displaymanager=self.window.displaymanager_screen.chosen_displaymanager,

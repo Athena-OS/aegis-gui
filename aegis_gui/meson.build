@@ -37,6 +37,7 @@ aegis_gui_sources = [
   'main.py',
   'window.py',
   'keymaps.py',
+  'kernels.py',
   'desktops.py',
   'themes.py',
   'displaymanagers.py',

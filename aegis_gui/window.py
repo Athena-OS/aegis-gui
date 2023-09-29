@@ -21,6 +21,7 @@ import time
 import socket
 from gi.repository import Gtk, Gdk, GLib, Adw
 from aegis_gui.classes.partition import Partition
+from aegis_gui.widgets.kernel import KernelEntry
 from aegis_gui.widgets.desktop import DesktopEntry
 from aegis_gui.widgets.theme import ThemeEntry
 from aegis_gui.widgets.displaymanager import DisplayManagerEntry
@@ -33,6 +34,7 @@ from aegis_gui.functions.keyboard_screen import KeyboardScreen
 from aegis_gui.functions.timezone_screen import TimezoneScreen
 from aegis_gui.functions.locale_screen import LocaleScreen
 from aegis_gui.functions.user_screen import UserScreen
+from aegis_gui.functions.kernel_screen import KernelScreen
 from aegis_gui.functions.desktop_screen import DesktopScreen
 from aegis_gui.functions.theme_screen import ThemeScreen
 from aegis_gui.functions.displaymanager_screen import DisplayManagerScreen
@@ -48,6 +50,7 @@ from aegis_gui.functions.welcome_screen import WelcomeScreen
 from aegis_gui.classes.aegis_screen import AegisScreen
 from aegis_gui.locales.locales_list import locations
 from aegis_gui.keymaps import keymaps
+from aegis_gui.kernels import kernels
 from aegis_gui.desktops import desktops
 from aegis_gui.themes import themes
 from aegis_gui.displaymanagers import displaymanagers
@@ -85,6 +88,9 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
             window=self, set_valid=self.page_valid, **kwargs
         )
         self.misc_screen = MiscScreen(window=self, set_valid=self.page_valid, **kwargs)
+        self.kernel_screen = KernelScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
         self.desktop_screen = DesktopScreen(
             window=self, set_valid=self.page_valid, **kwargs
         )
@@ -129,6 +135,7 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.carousel.append(self.timezone_screen)
         self.carousel.append(self.locale_screen)
         self.carousel.append(self.user_screen)
+        self.carousel.append(self.kernel_screen)
         self.carousel.append(self.desktop_screen)
         self.carousel.append(self.theme_screen)
         self.carousel.append(self.displaymanager_screen)
@@ -150,6 +157,27 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
 
         self.next_button.connect("clicked", self.next)
         self.back_button.connect("clicked", self.back)
+
+        ### Test kernels
+        firstkernel = KernelEntry(
+            window=self, kernel=kernels[0], button_group=None, **kwargs
+        )  # Manually specifying Firefox since the other entries need a button group to attach to
+        self.kernel_screen.list_kernels.append(firstkernel)
+        self.kernel_screen.chosen_kernel = (
+            self.kernel_screen.list_kernels.get_row_at_index(0).get_title()
+        )
+        self.kernel_screen.list_kernels.select_row(firstkernel)
+        for kernel in kernels:
+            if kernel != kernels[0]:
+                self.kernel_screen.list_kernels.append(
+                    KernelEntry(
+                        window=self,
+                        kernel=kernel,
+                        button_group=firstkernel.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
 
         ### Test desktops
         firstdesktop = DesktopEntry(

@@ -35,7 +35,7 @@ class MiscScreen(AegisScreen, Adw.Bin):
     hostname = "athena"
     ipv_enabled = False
     zramd_enabled = False
-    timeshift_enabled = True
+    timeshift_enabled = False
     snapper_enabled = True
     zramd_enabled = True
     move_to_summary = False
