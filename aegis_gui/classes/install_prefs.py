@@ -109,13 +109,6 @@ class InstallPrefs:
             "extra_packages": ["nix"],
             "flatpak": False,
             "zramd": self.zramd_enabled,
-            "unakite": {
-                "enable": False,
-                "root": "/dev/null",
-                "oldroot": self.disk,
-                "efidir": "/dev/null",
-                "bootdev": "/dev/null",
-            },
             "kernel": "linux-lts",
         }
         return json.dumps(prefs)

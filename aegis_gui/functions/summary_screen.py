@@ -63,7 +63,6 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     zramd_label = Gtk.Template.Child()
     zramd_button = Gtk.Template.Child()
     added_locales = []
-    # unakite_label = Gtk.Template.Child()
 
     def __init__(self, window, application, **kwargs):
         super().__init__(**kwargs)
@@ -198,7 +197,6 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             if self.window.misc_screen.zramd_enabled
             else "zramd disabled"
         )
-        # self.unakite_label.set_title("Unakite enabled "+"enabled" if self.window.misc_screen.)
 
         partitions = []
         for i in range(0, len(self.window.available_partitions)):
