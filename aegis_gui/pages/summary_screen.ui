@@ -419,6 +419,21 @@
                           </object>
                         </child>
                         <child>
+                          <object class="AdwActionRow" id="hardened_label">
+                            <property
+                              name="title"
+                              translatable="true">hardened enabled/disabled</property>
+                            <child>
+                              <object class="GtkButton" id="hardened_button">
+                                <property name="valign">center</property>
+                                <property name="halign">center</property>
+                                <property
+                                  name="icon-name">document-edit-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
                           <object class="AdwActionRow" id="zramd_label">
                             <property
                               name="title"

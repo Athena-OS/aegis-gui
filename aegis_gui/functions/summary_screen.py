@@ -64,6 +64,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     snapper_button = Gtk.Template.Child()
     zramd_label = Gtk.Template.Child()
     zramd_button = Gtk.Template.Child()
+    hardened_label = Gtk.Template.Child()
+    hardened_button = Gtk.Template.Child()
     added_locales = []
 
     def __init__(self, window, application, **kwargs):
@@ -128,6 +130,9 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             "clicked", self.window.show_page, self.window.misc_screen
         )
         self.zramd_button.connect(
+            "clicked", self.window.show_page, self.window.misc_screen
+        )
+        self.hardened_button.connect(
             "clicked", self.window.show_page, self.window.misc_screen
         )
 
@@ -204,6 +209,11 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             if self.window.misc_screen.zramd_enabled
             else "zramd disabled"
         )
+        self.hardened_label.set_title(
+            "hardened enabled"
+            if self.window.misc_screen.hardened_enabled
+            else "hardened disabled"
+        )
 
         partitions = []
         for i in range(0, len(self.window.available_partitions)):
@@ -225,6 +235,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             timeshift_enabled=self.window.misc_screen.timeshift_enabled,
             snapper_enabled=self.window.misc_screen.snapper_enabled,
             zramd_enabled=self.window.misc_screen.zramd_enabled,
+            hardened_enabled=self.window.misc_screen.hardened_enabled,
             kernel=self.window.kernel_screen.chosen_kernel,
             desktop=self.window.desktop_screen.chosen_desktop,
             theme=self.window.theme_screen.chosen_theme,

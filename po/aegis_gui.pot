@@ -115,13 +115,21 @@ msgstr "Snapper"
 msgid "Create and compare snapshots, revert between snapshots, and support automatic snapshots timelines."
 msgstr "Create and compare snapshots, revert between snapshots, and support automatic snapshots timelines."
 
+#: src/pages/misc_screen.ui:X
+msgid "Hardened"
+msgstr "Hardened"
+
+#: src/pages/misc_screen.ui:X
+msgid "Apply security configuration controls."
+msgstr "Apply security configuration controls."
+
 #: src/pages/misc_screen.ui:57
 msgid "Zramd"
 msgstr "Zramd"
 
 #: src/pages/misc_screen.ui:58
-msgid "Creates a compressed area of Swap in RAM."
-msgstr "Creates a compressed area of Swap in RAM."
+msgid "Create a compressed area of Swap in RAM."
+msgstr "Create a compressed area of Swap in RAM."
 
 #: src/pages/partition_screen.ui:26
 msgid "Select partitions to install to"

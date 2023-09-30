@@ -68,6 +68,24 @@
                             </child>
                           </object>
                         </child> <!--End Snapper-->
+                        <child> <!--Hardened-->
+                          <object class="AdwActionRow">
+                            <property name="activatable">false</property>
+                            <property name="selectable">false</property>
+                            <property
+                              name="title"
+                              translatable="true">Hardened</property>
+                            <property
+                              name="subtitle"
+                              translatable="true">Apply security configuration controls.</property>
+                            <child>
+                              <object class="GtkSwitch" id="hardened_switch">
+                                <property name="valign">center</property>
+                                <property name="active">true</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child><!--End Hardened-->
                         <child> <!--zRAM-->
                           <object class="AdwActionRow">
                             <property name="activatable">false</property>
@@ -77,7 +95,7 @@
                               translatable="true">Zramd</property>
                             <property
                               name="subtitle"
-                              translatable="true">Creates a compressed area of Swap in RAM.</property>
+                              translatable="true">Create a compressed area of Swap in RAM.</property>
                             <child>
                               <object class="GtkSwitch" id="zramd_switch">
                                 <property name="valign">center</property>
