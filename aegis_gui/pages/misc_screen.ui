@@ -45,7 +45,7 @@
                             <child>
                               <object class="GtkSwitch" id="timeshift_switch">
                                 <property name="valign">center</property>
-                                <property name="active">true</property>
+                                <property name="active">false</property>
                               </object>
                             </child>
                           </object>
@@ -81,7 +81,7 @@
                             <child>
                               <object class="GtkSwitch" id="hardened_switch">
                                 <property name="valign">center</property>
-                                <property name="active">true</property>
+                                <property name="active">false</property>
                               </object>
                             </child>
                           </object>
