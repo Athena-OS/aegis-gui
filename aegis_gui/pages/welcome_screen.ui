@@ -39,7 +39,7 @@
             <property name="spacing">5</property>
             <child>
               <object class="GtkLabel" id="no_internet">
-                <property name="label">Please connect to the internet first!</property>
+                <property name="label">Please connect to Internet first!</property>
                 <property name="visible">false</property>
                 <style>
                   <class name="error"/>
