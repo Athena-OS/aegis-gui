@@ -8,7 +8,6 @@ aegis_gui_sources = [
     'variant.py',
     'kernel.py',
     'desktop.py',
-    'theme.py',
     'displaymanager.py',
     'shell.py',
     'browser.py',
