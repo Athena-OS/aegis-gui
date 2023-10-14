@@ -47,6 +47,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
     kernel_button = Gtk.Template.Child()
     desktop_label = Gtk.Template.Child()
     desktop_button = Gtk.Template.Child()
+    theme_label = Gtk.Template.Child()
+    theme_button = Gtk.Template.Child()
     displaymanager_label = Gtk.Template.Child()
     displaymanager_button = Gtk.Template.Child()
     browser_label = Gtk.Template.Child()
@@ -105,6 +107,9 @@ class SummaryScreen(AegisScreen, Adw.Bin):
         )
         self.desktop_button.connect(
             "clicked", self.window.show_page, self.window.desktop_screen
+        )
+        self.theme_button.connect(
+            "clicked", self.window.show_page, self.window.theme_screen
         )
         self.displaymanager_button.connect(
             "clicked", self.window.show_page, self.window.displaymanager_screen
@@ -169,6 +174,8 @@ class SummaryScreen(AegisScreen, Adw.Bin):
 
         self.desktop_label.set_title(self.window.desktop_screen.chosen_desktop)
 
+        self.theme_label.set_title(self.window.theme_screen.chosen_theme)
+
         self.displaymanager_label.set_title(self.window.displaymanager_screen.chosen_displaymanager)
 
         self.browser_label.set_title(self.window.browser_screen.chosen_browser)
@@ -231,6 +238,7 @@ class SummaryScreen(AegisScreen, Adw.Bin):
             hardened_enabled=self.window.misc_screen.hardened_enabled,
             kernel=self.window.kernel_screen.chosen_kernel,
             desktop=self.window.desktop_screen.chosen_desktop,
+            theme=self.window.theme_screen.chosen_theme,
             displaymanager=self.window.displaymanager_screen.chosen_displaymanager,
             shell=self.window.shell_screen.chosen_shell,
             browser=self.window.browser_screen.chosen_browser,

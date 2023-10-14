@@ -23,6 +23,7 @@ from gi.repository import Gtk, Gdk, GLib, Adw
 from aegis_gui.classes.partition import Partition
 from aegis_gui.widgets.kernel import KernelEntry
 from aegis_gui.widgets.desktop import DesktopEntry
+from aegis_gui.widgets.theme import ThemeEntry
 from aegis_gui.widgets.displaymanager import DisplayManagerEntry
 from aegis_gui.widgets.shell import ShellEntry
 from aegis_gui.widgets.browser import BrowserEntry
@@ -35,6 +36,7 @@ from aegis_gui.functions.locale_screen import LocaleScreen
 from aegis_gui.functions.user_screen import UserScreen
 from aegis_gui.functions.kernel_screen import KernelScreen
 from aegis_gui.functions.desktop_screen import DesktopScreen
+from aegis_gui.functions.theme_screen import ThemeScreen
 from aegis_gui.functions.displaymanager_screen import DisplayManagerScreen
 from aegis_gui.functions.shell_screen import ShellScreen
 from aegis_gui.functions.browser_screen import BrowserScreen
@@ -50,6 +52,7 @@ from aegis_gui.locales.locales_list import locations
 from aegis_gui.keymaps import keymaps
 from aegis_gui.kernels import kernels
 from aegis_gui.desktops import desktops
+from aegis_gui.themes import themes
 from aegis_gui.displaymanagers import displaymanagers
 from aegis_gui.shells import shells
 from aegis_gui.browsers import browsers
@@ -89,6 +92,9 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
             window=self, set_valid=self.page_valid, **kwargs
         )
         self.desktop_screen = DesktopScreen(
+            window=self, set_valid=self.page_valid, **kwargs
+        )
+        self.theme_screen = ThemeScreen(
             window=self, set_valid=self.page_valid, **kwargs
         )
         self.displaymanager_screen = DisplayManagerScreen(
@@ -131,6 +137,7 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
         self.carousel.append(self.user_screen)
         self.carousel.append(self.kernel_screen)
         self.carousel.append(self.desktop_screen)
+        self.carousel.append(self.theme_screen)
         self.carousel.append(self.displaymanager_screen)
         self.carousel.append(self.shell_screen)
         self.carousel.append(self.browser_screen)
@@ -193,6 +200,27 @@ class AegisGuiWindow(Gtk.ApplicationWindow):
                 )
         ### ---------
 
+        ### Test themes
+        firsttheme = ThemeEntry(
+            window=self, theme=themes[0], button_group=None, **kwargs
+        )  # Manually specifying Akame since the other entries need a button group to attach to
+        self.theme_screen.list_themes.append(firsttheme)
+        self.theme_screen.chosen_theme = (
+            self.theme_screen.list_themes.get_row_at_index(0).get_title()
+        )
+        self.theme_screen.list_themes.select_row(firsttheme)
+        for theme in themes:
+            if theme != themes[0]:
+                self.theme_screen.list_themes.append(
+                    ThemeEntry(
+                        window=self,
+                        theme=theme,
+                        button_group=firsttheme.select_button,
+                        **kwargs
+                    )
+                )
+        ### ---------
+        
         ### Test display managers
         firstdm = DisplayManagerEntry(
             window=self, displaymanager=displaymanagers[0], button_group=None, **kwargs

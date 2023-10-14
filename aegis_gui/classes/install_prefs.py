@@ -40,6 +40,7 @@ class InstallPrefs:
         hardened_enabled,
         kernel,
         desktop,
+        theme,
         displaymanager,
         browser,
         terminal,
@@ -65,6 +66,7 @@ class InstallPrefs:
         self.hardened_enabled = hardened_enabled
         self.kernel = kernel
         self.desktop = desktop
+        self.theme = theme
         self.displaymanager = displaymanager
         self.browser = browser
         self.terminal = terminal
@@ -102,6 +104,7 @@ class InstallPrefs:
             ],
             "rootpass": self.password,
             "desktop": self.desktop.lower(),
+            "theme": self.theme.lower(),
             "displaymanager": self.displaymanager.lower(),
             "browser": self.browser.lower(),
             "terminal": self.terminal.lower(),
