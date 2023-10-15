@@ -5,5 +5,6 @@ desktops = [
     "KDE Plasma",
     "MATE",
     "Cinnamon",
-    "XFCE",
+    "XFCE Well",
+    "XFCE Picom",
 ]
