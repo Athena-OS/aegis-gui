@@ -1,5 +1,6 @@
 displaymanagers = [
     "GDM",
-    "LightDM",
+    "LightDM Neon",
+    "LightDM Everblush",
     "SDDM",
 ]
