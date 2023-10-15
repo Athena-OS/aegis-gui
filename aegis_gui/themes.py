@@ -1,9 +1,10 @@
 themes = [
     "Akame",
-    "Samurai",
-    "Graphite",
     "Cyborg",
+    "Everblush",
+    "Graphite",
+    "HackTheBox",
+    "Samurai",
     "Sweet",
     "XXE",
-    "HackTheBox",
 ]
