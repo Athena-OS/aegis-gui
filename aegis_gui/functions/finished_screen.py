@@ -79,7 +79,7 @@ class FinishedScreen(AegisScreen, Adw.Bin):
         self.set_valid(True)
 
     def reboot(self, widget):
-        CommandUtils.run_command(["gnome-session-quit", "--reboot"])
+        CommandUtils.run_command(["reboot"])
 
     def output(self, widget):
         with open("/tmp/aegis-gui-output.txt", "r") as f:
