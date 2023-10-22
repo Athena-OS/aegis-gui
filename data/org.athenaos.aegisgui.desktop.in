@@ -6,6 +6,6 @@ Exec=aegis-gui
 Icon=org.athenaos.aegisgui
 
 Terminal=false
-Type=Application
+Type=Application;Utility
 Categories=GTK;
 StartupNotify=true
