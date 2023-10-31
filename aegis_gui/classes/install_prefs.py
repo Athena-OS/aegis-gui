@@ -34,7 +34,6 @@ class InstallPrefs:
         enable_sudo,
         disk,
         hostname,
-        timeshift_enabled,
         snapper_enabled,
         zramd_enabled,
         hardened_enabled,
@@ -60,7 +59,6 @@ class InstallPrefs:
         else:
             self.disk = ""
         self.hostname = hostname if len(hostname) != 0 else "athena"
-        self.timeshift_enabled = timeshift_enabled
         self.snapper_enabled = snapper_enabled
         self.zramd_enabled = zramd_enabled
         self.hardened_enabled = hardened_enabled
@@ -108,7 +106,6 @@ class InstallPrefs:
             "displaymanager": self.displaymanager.lower(),
             "browser": self.browser.lower(),
             "terminal": self.terminal.lower(),
-            "timeshift": self.timeshift_enabled,
             "snapper": self.snapper_enabled,
             "extra_packages": ["flameshot"],
             "flatpak": False,

@@ -32,24 +32,6 @@
                         <style>
                           <class name="boxed-list"/>
                         </style>
-                        <child> <!--Timeshift-->
-                          <object class="AdwActionRow">
-                            <property name="activatable">false</property>
-                            <property name="selectable">false</property>
-                            <property
-                              name="title"
-                              translatable="true">Timeshift</property>
-                            <property
-                              name="subtitle"
-                              translatable="true">Support snapshots as a means to roll back to earlier states of the system.</property>
-                            <child>
-                              <object class="GtkSwitch" id="timeshift_switch">
-                                <property name="valign">center</property>
-                                <property name="active">false</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child> <!--End Timeshift-->
                         <child> <!--Snapper-->
                           <object class="AdwActionRow">
                             <property name="activatable">false</property>
