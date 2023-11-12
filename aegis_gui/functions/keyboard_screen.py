@@ -106,21 +106,18 @@ class KeyboardScreen(AegisScreen, Adw.Bin):
         if variant is None or variant == "normal":
             CommandUtils.run_command(
                 [
-                    "gsettings",
-                    "set",
-                    "org.gnome.desktop.input-sources",
-                    "sources",
-                    "[('xkb', '{}')]".format(layout),
+                    "setxkbmap",
+                    "{}".format(layout),
                 ]
             )
         else:
             CommandUtils.run_command(
                 [
-                    "gsettings",
-                    "set",
-                    "org.gnome.desktop.input-sources",
-                    "sources",
-                    "[('xkb', '{}+{}')]".format(layout, variant),
+                    "setxkbmap",
+                    "-layout",
+                    "{}".format(layout),
+                    "-variant",
+                    "{}".format(variant),
                 ]
             )
 
